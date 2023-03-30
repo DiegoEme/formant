@@ -1,10 +1,11 @@
 import { Request, Response } from "express";
-import { v4 as uuidv4 } from "uuid";
-import { Robot, storage } from "../models/index.js";
+import { MyStorage, Robot } from "../models/index.js";
+
+const storage = new MyStorage();
 
 export const list = async (req: Request, res: Response) => {
   try {
-    const robots = storage;
+    const robots = await storage.list();
     return res.json(robots);
   } catch (err) {
     console.error(err);
@@ -19,10 +20,10 @@ export const add = async (req: Request, res: Response) => {
     return res.status(400).send("Name and number_of_arms are required");
   }
 
-  const robot: Robot = { name, number_of_arms, id: uuidv4() };
+  const robot: Robot = { name, number_of_arms };
 
   try {
-    storage.push(robot);
+    storage.add(robot);
     return res.status(201).json(robot);
   } catch (err) {
     console.error(err);
