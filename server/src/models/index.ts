@@ -1,9 +1,10 @@
 import { v4 as uuidv4 } from "uuid";
 
 export interface Robot {
-  id?: number;
-  name: string;
-  number_of_arms: number;
+  name?: string;
+  age?: string;
+  arms?: string;
+  picture?: string;
 }
 export interface Storage {
   add(robot: Robot): Promise<Robot>;

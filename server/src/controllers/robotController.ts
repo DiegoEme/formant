@@ -14,13 +14,18 @@ export const list = async (req: Request, res: Response) => {
 };
 
 export const add = async (req: Request, res: Response) => {
-  const { name, number_of_arms } = req.body;
+  const { name, arms, age, picture } = req.body;
 
-  if (!name || !number_of_arms) {
-    return res.status(400).send("Name and number_of_arms are required");
+  if (!name || !arms || !age) {
+    return res.status(400).send("name, arms and age are required");
   }
 
-  const robot: Robot = { name, number_of_arms };
+  const robot: Robot = {
+    name,
+    arms,
+    age,
+    picture,
+  };
 
   try {
     storage.add(robot);
