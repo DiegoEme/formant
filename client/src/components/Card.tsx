@@ -26,5 +26,3 @@ const Card = ({ robot }: CardPorps) => {
 };
 
 export default Card;
-
-//https://images.pexels.com/photos/2599244/pexels-photo-2599244.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2
